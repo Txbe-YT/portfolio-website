@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tobenna | Software Engineer</title>
+<meta name="description" content="Portfolio of Tobenna, a final-year software engineering student at Pan-Atlantic University, Lagos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Unbounded:wght@300;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Tobenna</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>I'm Tobenna. I find what's broken, then build the fix.</h1>
+      <p class="lede">Final-year software engineering student at Pan-Atlantic University in Lagos. I write Java back ends, and I'm training a model to catch scam messages written in Nigerian Pidgin.</p>
+
+      <div class="flag">
+        <label for="sms">Try it: paste a message and see what looks suspicious</label>
+        <textarea id="sms" rows="3">Dear customer, your GTB acct don block. Abeg click this link and verify your BVN now, or we go suspend am.</textarea>
+        <div class="out" id="out" aria-hidden="true"></div>
+        <p id="verdict" aria-live="polite"></p>
+        <p class="note">This is a simple keyword check. The real model lives in my SafeText NG project below.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap two">
+      <div>
+        <h2>About me</h2>
+        <p>I build software by starting small and making each project harder than the last. My strongest work so far is in Java: JavaFX desktop apps backed by PostgreSQL, organised with the DAO pattern.</p>
+        <p>This year I interned on the AI/ML engineering team at MTN Nigeria, where I worked on data preprocessing and a key-value store. It pushed me toward machine learning, and my final-year project came out of that.</p>
+        <p>I like problems where Nigerian context matters, because most tools aren't built with it in mind.</p>
+      </div>
+      <dl>
+        <dt>Studying</dt><dd>Software engineering, Pan-Atlantic University</dd>
+        <dt>Focus</dt><dd>Java back ends, databases, applied machine learning</dd>
+        <dt>Tools</dt><dd>Java, JavaFX, PostgreSQL, Maven, IntelliJ, Git, HTML/CSS/JavaScript</dd>
+        <dt>Based in</dt><dd>Lagos, Nigeria</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+
+      <article class="proj">
+        <div>
+          <h3>SafeText NG</h3>
+          <p>A framework that detects financial scam messages in Nigerian Pidgin SMS and WhatsApp texts, where existing detectors fail.</p>
+          <p class="stack">Python, scikit-learn (TF-IDF + SVM), web dashboard</p>
+          <p class="links"><a href="project.html">Read the full case study</a></p>
+        </div>
+        <figure>
+          <div class="shot">Screenshot goes here<img src="assets/safetext-1.png" alt="SafeText NG dashboard" onerror="this.remove()"></div>
+        </figure>
+      </article>
+
+      <article class="proj">
+        <div>
+          <h3>Sante Diagnostics LIMS</h3>
+          <p>A lab information system built with two teammates. I built the Super Admin module: login, role-based navigation, audit trail, BCrypt password hashing and user management.</p>
+          <p class="stack">Java, JavaFX, PostgreSQL, DAO pattern</p>
+          <p class="links"><a href="https://github.com/Txbe-YT">My GitHub</a></p>
+        </div>
+        <figure>
+          <div class="shot">Screenshot goes here<img src="assets/lims-1.png" alt="Sante Diagnostics LIMS admin screen" onerror="this.remove()"></div>
+        </figure>
+      </article>
+
+      <article class="proj">
+        <div>
+          <h3>Personal Expense Tracker</h3>
+          <p>A desktop app for logging and reviewing spending in naira, stored in PostgreSQL.</p>
+          <p class="stack">Java, JavaFX, PostgreSQL, Maven</p>
+          <p class="links"><a href="https://github.com/Txbe-YT">View on GitHub</a></p>
+        </div>
+        <figure>
+          <div class="shot">Screenshot goes here<img src="assets/expense-1.png" alt="Personal Expense Tracker main screen" onerror="this.remove()"></div>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Hire me or just say hello</h2>
+      <p>I'm open to internships and junior roles. Email is fastest, and I reply on WhatsApp too.</p>
+      <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email me</a>
+      <a class="btn alt" href="https://wa.me/234XXXXXXXXXX" rel="noopener">Message on WhatsApp</a>
+      <a class="btn alt" href="https://github.com/Txbe-YT" rel="noopener">See my code</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tobenna, Pan-Atlantic University</span>
+    <span>Lagos, <span id="clock"></span> WAT</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
