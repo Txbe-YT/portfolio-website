@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SafeText NG | Tobenna</title>
-<meta name="description" content="Case study: detecting financial scam messages in Nigerian Pidgin.">
+<title>Sante Diagnostics LIMS | Tobenna</title>
+<meta name="description" content="Case study: the Super Admin module of a lab information system.">
+<script>document.documentElement.className='js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Unbounded:wght@300;700;900&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
     <nav aria-label="Main">
       <a href="index.html#about">About</a>
       <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">Contact</a>
+      <a class="pill" href="#contact">Get in touch</a>
     </nav>
   </div>
 </header>
@@ -25,32 +26,28 @@
 <main>
   <section class="hero">
     <div class="wrap">
-      <h1>SafeText NG</h1>
-      <p class="lede">A framework that catches financial scam messages written in Nigerian Pidgin, SMS and WhatsApp included.</p>
-      <div class="facts">
-        <span>Final-year project</span>
-        <span>Solo</span>
-        <span>In progress</span>
-      </div>
+      <h1><span class="ln"><span>Sante Diagnostics LIMS</span></span></h1>
+      <p class="lede">A lab information system for a diagnostic centre, built by a team of three. I owned the administration and security side.</p>
+      <div class="facts"><span>Group project</span><span>Java, JavaFX, PostgreSQL</span><span>My role: Super Admin module</span></div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <h2>The problem</h2>
-      <p>Scam messages in Nigeria often mix English and Pidgin: "your acct don block, abeg verify your BVN." Existing scam detectors are trained on standard English, so they miss this kind of text.</p>
-      <p>People lose money to these messages, and there is no tool built for the way Nigerians actually write.</p>
+      <p>A diagnostic lab handles patient records, samples and results, and every one of those needs controlled access. Staff must see only what their role allows, and the lab needs a trail of who did what.</p>
+      <p class="note">Edit this to match your team's actual problem statement.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2>What it does</h2>
+      <h2>What I built</h2>
       <ul class="plain">
-        <li>Uses a dataset I labelled myself, made of real-style Pidgin and code-switched scam and normal messages.</li>
-        <li>Trains a TF-IDF + SVM baseline to classify a message as scam or not.</li>
-        <li>Compares that baseline against transformer fine-tuning.</li>
-        <li>Serves results through a real-time web dashboard where you can check a message.</li>
+        <li><b>Secure login</b> with passwords hashed using BCrypt, so they're never stored in plain text.</li>
+        <li><b>Role-based navigation</b> so each user only sees the screens their role allows.</li>
+        <li><b>Audit trail</b> that records important actions, so changes can be traced to a person.</li>
+        <li><b>User management</b> where the Super Admin creates, edits and removes accounts.</li>
       </ul>
     </div>
   </section>
@@ -60,12 +57,12 @@
       <h2>Screenshots</h2>
       <div class="shots">
         <figure>
-          <div class="shot">Add dashboard screenshot<img src="assets/safetext-1.png" alt="SafeText NG dashboard checking a message" onerror="this.remove()"></div>
-          <figcaption>Dashboard: checking a message</figcaption>
+          <div class="frame wipe"><div class="bar"><i></i><i></i><i></i></div><div class="shot">Add login screenshot<img src="assets/lims-1.png" alt="Login screen" onerror="this.remove()"></div></div>
+          <figcaption>Login screen</figcaption>
         </figure>
         <figure>
-          <div class="shot">Add results screenshot<img src="assets/safetext-2.png" alt="SafeText NG model results" onerror="this.remove()"></div>
-          <figcaption>Model results</figcaption>
+          <div class="frame wipe"><div class="bar"><i></i><i></i><i></i></div><div class="shot">Add user management screenshot<img src="assets/lims-2.png" alt="User management screen" onerror="this.remove()"></div></div>
+          <figcaption>User management</figcaption>
         </figure>
       </div>
     </div>
@@ -74,7 +71,7 @@
   <section>
     <div class="wrap">
       <h2>Technologies</h2>
-      <p>Python, scikit-learn (TF-IDF, SVM), possible transformer fine-tuning, a web dashboard for real-time checks.</p>
+      <span class="tag">Java</span><span class="tag">JavaFX</span><span class="tag">PostgreSQL</span><span class="tag">DAO pattern</span><span class="tag">BCrypt</span><span class="tag">Maven</span><span class="tag">Git and GitHub</span>
     </div>
   </section>
 
@@ -82,19 +79,21 @@
     <div class="wrap">
       <h2>What I learned</h2>
       <ul class="plain">
-        <li>Data quality decides everything. Labelling messages by hand taught me how inconsistent Pidgin spelling is.</li>
-        <li>Starting with a simple baseline gives you something to beat before you try heavier models.</li>
-        <li>Code-switching (English and Pidgin in one sentence) breaks tools that assume one language.</li>
+        <li>Why passwords are hashed and not encrypted, and how BCrypt makes guessing slow.</li>
+        <li>How role-based access works in practice, and how easy it is to leave one screen unprotected.</li>
+        <li>How to split one system across three people with a shared database without breaking each other's work.</li>
       </ul>
-      <p class="note">Edit this list so it matches what you actually learned. You'll be asked about it in class.</p>
+      <p class="note">Rewrite these in your own words. You'll be asked about them in class.</p>
     </div>
   </section>
 
   <section id="contact">
     <div class="wrap">
-      <h2>Want to talk about it?</h2>
-      <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email me</a>
-      <a class="btn alt" href="index.html#projects">Back to projects</a>
+      <div class="cta">
+        <h2>Want to talk about it?</h2>
+        <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email me</a>
+        <a class="btn alt" href="index.html#projects">Back to projects</a>
+      </div>
     </div>
   </section>
 </main>
