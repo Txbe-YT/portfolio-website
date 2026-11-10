@@ -32,13 +32,19 @@ if (box) {
   scan(true);
 }
 
-// Screenshots wipe in as they scroll into view
+// Screenshots wipe in when their card scrolls into view
 const wipes = document.querySelectorAll('.wipe');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.25 });
-  wipes.forEach((w) => io.observe(w));
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.wipe').forEach((w) => w.classList.add('in'));
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  // watch each wipe's parent, because a fully clipped element can't report itself as visible
+  new Set([...wipes].map((w) => w.parentElement)).forEach((p) => io.observe(p));
 } else {
   wipes.forEach((w) => w.classList.add('in'));
 }
