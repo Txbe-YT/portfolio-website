@@ -1,4 +1,4 @@
-// Red-flag demo: a simple keyword check (not the real SafeText NG model)
+// Red-flag demo: a simple keyword check (not a trained model)
 const RISKY = /\b(bvn|otp|pin|password|verify|click|link|urgent|blocked?|suspend(?:ed)?|claim|prize|winner|congrat\w*|upgrade|free|abeg send|send money|transfer|dear customer|don block|go suspend)\b/gi;
 const box = document.getElementById('sms');
 const out = document.getElementById('out');
@@ -13,9 +13,9 @@ function scan(first) {
     out.append(text.slice(last, m.index));
     const mark = document.createElement('mark');
     mark.textContent = m[0];
-    if (first) { // one staggered reveal on page load
+    if (first) { // flags light up one by one on load
       mark.className = 'pre';
-      setTimeout(() => mark.classList.remove('pre'), 500 + n * 350);
+      setTimeout(() => mark.classList.remove('pre'), 900 + n * 350);
     }
     out.append(mark);
     last = m.index + m[0].length;
@@ -32,6 +32,17 @@ if (box) {
   scan(true);
 }
 
+// Screenshots wipe in as they scroll into view
+const wipes = document.querySelectorAll('.wipe');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.25 });
+  wipes.forEach((w) => io.observe(w));
+} else {
+  wipes.forEach((w) => w.classList.add('in'));
+}
+
 // Lagos clock in the footer
 const clock = document.getElementById('clock');
 if (clock) {
@@ -41,3 +52,16 @@ if (clock) {
   tick();
   setInterval(tick, 30000);
 }
+
+// Glow follows the cursor on project cards
+document.querySelectorAll('.proj').forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--y', (e.clientY - r.top) + 'px');
+  });
+});
+
+// Header gets a shadow once you scroll
+const head = document.querySelector('header');
+window.addEventListener('scroll', () => head.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
